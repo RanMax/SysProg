@@ -1,0 +1,28 @@
+#!/bin/bash
+PS3="Vvedite komandu"
+select x in "Create" "Rename" "Delete"
+do
+  if [ "$x"="Create"]
+  then
+  echo "Type name of the file"
+  read y
+  touch $y
+  else
+    if [ "$x" = "Rename"]
+    then
+    echo "Imya faila i novoe imya"
+    read z r
+    mv $z $r
+    else
+      if [ "$x" = "Delete" ]
+      then
+        echo "Kakoi fail udalyaem?"
+        read d
+        rm $d
+        else
+          echo "Spravka"
+      fi
+    fi
+  fi
+break
+done
