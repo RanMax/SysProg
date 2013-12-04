@@ -1,51 +1,46 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#define NL putchar('\n');
-#define konec system("pause"); return 0; 
+void getMass(int argc, char** argv, int* mas);
+void bubbleSort(int *data, int n);
+void printMas(int* mas, int argc);
 
-void bubblesort(int *mas, int n)
-{     
-    int i=0, j=0, t=0;
-    for(i=n-1; i>=0; i--)
-     for(j=0; j<i; j++)
-      if (mas[j]>mas[j+1])
-        {t=mas[j]; mas[j]=mas[j+1]; mas[j+1]=t; }
- }
 
-int main(int argc, char *argv[])
-{
-   int mas[argc-1];
-   int i;
-   //printf("Array size:");
-   //printf("%d", argc-1);
-   //printf("\n");
-  // printf("Elements:\n");
-   for (i=1; i<argc; i++)
-   {
-	   mas[i-1]=0;
-	   char* ch;
-	   ch=&argv[i][0];
-	   while (*ch != '\0')
-	   {
-		   if (*ch >= '0' && *ch <= '9') 
-		   {
-		   	  	   mas[i-1]=mas[i-1]*10 +(*ch -'0');
-		   		   ch++;
-		   }
-		   else
-		   {
-		   		return -1;
-		   }
-	   }
-	  // printf("%d", mas[i-1]);
-	   //printf("\n");
-   }
-   
-bubblesort(mas, argc-1) ;
+int main(int argc, char** argv){
+  int mas[argc - 1]; 
+  
+  getMass(argc, argv, mas);
+  //printMas(mas, argc-1);
+  bubbleSort(mas, argc - 2);
+  printMas(mas, argc-1);
+  
+  //getch();
+}
 
-for(i=0; i<argc-1; i++)
-  printf("%d\n", *(mas+i));
-  NL
-return 0; 
+void getMass(int argc, char** argv, int* mas){
+  //int val[argc - 1];
+  int i;
+  for(i=1; i<argc; i++) mas[i-1]=atol(*(argv+i));
+  //return mas;  
+}
+
+void printMas(int* mas, int argc){
+  int i;
+  //printf("Elements:\n");
+  for (i = 0; i < argc; i++){
+     printf("%d",mas[i]);
+     printf("\n");
+  }
+}
+
+void bubbleSort(int *data, int n){
+  int j;
+  for (j = 0; j < n; ++j){
+    int i;
+    for (i = 0; i < n - j; ++i){
+      if (data[i] > data[i+1]){
+        int temp = data[i];
+        data[i] = data[i+1];
+        data[i+1] = temp;
+      }
+    }
+  }
 }
