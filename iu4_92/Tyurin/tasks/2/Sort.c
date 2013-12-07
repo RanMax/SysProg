@@ -14,7 +14,7 @@ int main(int argc ,char** argv)
      {
       bufer=mas[j]; mas[j]=mas[j+1];mas[j+1]=bufer; 
      }
-   //printf("\n Sorted Array:\n");
+   
    for(i1=1; i1<argc; i1++)
    printf("%d\n",mas[i1]); 
 	return 0;
