@@ -3,7 +3,8 @@
 int main(int argc ,char** argv)
 {
  int mas[argc];
-  for(int i=1; i<argc; i++)
+ int i;
+  for(i=1; i<argc; i++)
   {
 	mas[i]=atol(*(argv+i));
 }
