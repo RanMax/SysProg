@@ -4,14 +4,15 @@ void bubble_sort(int* data, int size);
 int main(int argc, char** argv)
 {
     int mas[argc];
-    for(int i=1; i<argc; i++)
+    int i;
+	for(i=1; i<argc; i++)
     {
         mas[i-1]=atol(*(argv+i));
     }
     bubble_sort(mas, argc-1);
-    for(int i=0; i<argc-1; i++)
+    for(i=0; i<argc-1; i++)
     {
-	printf("%d\n",mas[i]);
+        printf("%d\n",mas[i]);
     }
     return 0;
 }
@@ -31,5 +32,3 @@ void bubble_sort(int* data, int size)
 		}
 	}
 }
-
-
