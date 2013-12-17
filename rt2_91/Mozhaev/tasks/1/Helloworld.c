@@ -6,6 +6,6 @@
 int main(int argc, char *argv[]) 
 {
         printf("Hello World\n");
-        getch();
+        //getch();
         return 0;
 }
