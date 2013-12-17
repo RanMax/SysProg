@@ -1,41 +1,41 @@
-#include <iostream>
 #include <stdio.h>
-#include <stdlib.h>
-#include <conio.h>
 
-int main(int argc, char *argv[]) 
-{
-        int mas[argc-1];
-        int i;
-        for (i=1; i<argc; i++)
-   {
-           mas[i-1]=0;
-           char* ch;
-           ch=&argv[i][0];
-           while (*ch != '\0')
-           {
-                   if (*ch >= '0' && *ch <= '9') 
-                   {
-                                        mas[i-1]=mas[i-1]*10 +(*ch -'0');
-                                      ch++;
-                   }
-                   else
-                   {
-                                   return -1;
-                   }
-           }
-   }
-   int j=0, l=0;
-   for (i=0; i<argc; i++)
-           for (j=0; j<argc-i-1; j++)
-                   if(mas[j]>mas[j+1])
-                   {
-                           l=mas[j];
-                           mas[j]=mas[j+1];
-                           mas[j+1]=l;
-                   }
-           for(i=0; i<argc-1; i++)
-            printf("%d\n", *(mas+i));
-        getch();
-        return 0;
+void getMass(int argc, char** argv, int* mas);
+void bubbleSort(int *data, int n);
+void printMas(int* mas, int argc);
+
+
+int main(int argc, char** argv){
+  int mas[argc - 1]; 
+  
+  getMass(argc, argv, mas);
+  bubbleSort(mas, argc - 2);
+  printMas(mas, argc-1);
+}
+
+void getMass(int argc, char** argv, int* mas){
+  int i;
+  for(i=1; i<argc; i++) mas[i-1]=atol(*(argv+i));
+}
+
+void printMas(int* mas, int argc){
+  int i;
+  for (i = 0; i < argc; i++){
+     printf("%d",mas[i]);
+     printf("\n");
+  }
+}
+
+void bubbleSort(int *data, int n){
+  int j;
+  for (j = 0; j < n; ++j){
+    int i;
+    for (i = 0; i < n - j; ++i){
+      if (data[i] > data[i+1]){
+        int temp = data[i];
+        data[i] = data[i+1];
+        data[i+1] = temp;
+      }
+    }
+  }
 }
