@@ -1,26 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 void bubble_sort(int* data, int size);
-int main(void)
+int main(int argc, char** argv)
 {
-	int mas[10];
-	int i;
-	mas[0]=4;
-	mas[1]=5;
-	mas[2]=1;
-	mas[3]=9;
-	mas[4]=10;
-	mas[5]=3;
-	mas[6]=4;
-	mas[7]=2;
-	mas[8]=34;
-	mas[9]=55;
-	bubble_sort(mas, 10);
-	for(i=0; i<10; i++)
-	{
-		printf("%d\n",mas[i]);
-	}
-	return 0;
+    int mas[argc];
+    for(int i=1; i<argc; i++)
+    {
+        mas[i-1]=atol(*(argv+i));
+    }
+    bubble_sort(mas, argc-1);
+    for(int i=0; i<argc-1; i++)
+    {
+	printf("%d\n",mas[i]);
+    }
+    return 0;
 }
 void bubble_sort(int* data, int size)
 {
