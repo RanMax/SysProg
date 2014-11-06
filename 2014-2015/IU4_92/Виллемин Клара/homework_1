@@ -1,0 +1,15 @@
+#!/bin/bash
+
+args=("$@")
+dest_path=${args[0]}
+cd $dest_path
+a=$(date +"%Y-%m-%d")
+a+=$(date +"-%H-%M")
+echo `mkdir $a`
+
+for (( i=1;i<$#;i++)); do
+    origin=${args[${i}]}
+    cp $origin  $dest_path -n
+    cp $origin  $a
+    rm $origin
+done 
