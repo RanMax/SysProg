@@ -18,10 +18,10 @@ else
 		cur_dir=$3
 		for file in `find $cur_dir -type f`
 		do
-			if [ -f file ];
+			if [ -f "$move_dir/${file##*/}" ];
 			then
-				echo "File Exists"
-				echo -e "$(date +%Y-%m-%d%_H:%M:%S) $file ERROR:Совпадение имени файла \n\r" >> $log_file
+				echo "File Exists ${file##*/}"
+				echo -e "$(date +%Y-%m-%d%_H:%M:%S) ${file##*/} ERROR:Совпадение имени файла \n\r" >> $log_file
 			else
 				cp "$file" "$move_dir"
 			fi
