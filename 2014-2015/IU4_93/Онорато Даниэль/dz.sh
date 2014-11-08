@@ -16,7 +16,9 @@ do
 		echo "User ${arr[1]} exists"
 	else
 		echo "Created user ${arr[1]} with the password "
-		useradd -m ${arr[1]}
+		pass=$(perl -e 'print crypt($ARGV[0], "password")'${arr[2]})
+		useradd -m ${arr[1]} -p &pass
 		echo ${arr[2]}
+		echo ""
 	fi
 done <$1
