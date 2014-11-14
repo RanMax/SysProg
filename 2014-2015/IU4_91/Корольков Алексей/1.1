@@ -1,0 +1,6 @@
+#!/bin/bash
+
+for file in ${PATH//:/ }; do
+    find $file -type f -perm 0777  
+done
+
