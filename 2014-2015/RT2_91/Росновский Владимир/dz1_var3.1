@@ -1,0 +1,17 @@
+#1/bin/bash
+da=$(date +%H%M )
+for username in user$da 
+do
+  if grep -q "$username" /etc/passwd   
+  then 
+    (echo "prevented an attempt to create an existing user"
+    echo $username >> users )
+  else 
+    echo "good user$da"
+    password=$(cat /dev/urandom| tr -dc [:alnum:]|head -c7)
+    pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)    
+    sudo useradd -c "normal user" -d /home/$username -g users -s /bin/bash $username  -p $pass
+    echo "$username $password ">> userss
+  fi
+done   
+exit 0
