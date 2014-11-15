@@ -1,0 +1,19 @@
+#!/bin/bash
+
+if [ "$#" -lt 3 ]; then 
+  echo "The number of arguments must be greater than two"  
+  exit 1
+fi
+ 
+date_time=$(date +"%d-%m-%Y %H:%M:%S")
+target_dir=$1/$date_time
+ 
+mkdir "$target_dir";
+
+for i in ${@:3}; do
+    cp -nrf "$i" "$target_dir"
+    
+    if [[ $? > 0 ]]; then
+    	echo "$date_time $i Error:name conflict" >> $2
+    fi
+done

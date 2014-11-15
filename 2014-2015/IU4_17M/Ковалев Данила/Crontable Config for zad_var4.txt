@@ -1,0 +1,2 @@
+Конфигурация Crontable
+*/2 * * * * root /var/zad_4.sh /var /var/test.log
