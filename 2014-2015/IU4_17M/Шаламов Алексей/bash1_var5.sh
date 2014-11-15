@@ -1,11 +1,9 @@
 #!/bin/bash
-echo "Введите архивируемый каталог:"
-read userdir
-echo "Выберите каталог для хранения:"
-read backupdir
+$1
+$2
 backupname=`date "+%Y-%m-%d-%H-%M-%S.tar"`
 echo $backupname
-#backupname1=aaa
-
-tar -cvzf $backupname $userdir
-mv $backupname $backupdir
+echo $1
+echo $1
+tar -cvzf $backupname $1
+mv $backupname $2

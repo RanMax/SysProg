@@ -1,1 +1,1 @@
-0 0 * * 6 /home/al/dz1/bash1_var5.sh
+0 0 * * 6 /home/al/dz1/bash1_var5.sh /home/al/dz1/tst1 /home/al/dz1/tst2
