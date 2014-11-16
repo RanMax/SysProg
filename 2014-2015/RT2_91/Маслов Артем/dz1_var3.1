@@ -1,0 +1,28 @@
+#!/bin/bash
+echo "Please,enter the directory:"
+read directory
+echo "Please,enter the directory of log file:"
+read logDirectory
+directory="/home/yury/Desktop/ART/"
+logDirectory="/home/yury/Desktop/"
+ls -l $directory | awk '{print $9}' > ~/files
+filesList=`sed -e 's/\n/\ /g' ~/files` 
+
+for file in $filesList
+do
+if [ ! -d $directory/$file ]
+then 
+ls -l $directory/$file | awk '{print $3}' >~/user
+user=`sed -e '' ~/user`
+if [ -f /home/$user/$file ]
+then 
+echo "File: $file already exits in the directory: $directory" »$logDirectory/log 
+else 
+cd $directory
+sudo mv $file /home/$user 
+fi 
+fi
+done 
+rm ~/user
+echo "Done"
+exit 0
