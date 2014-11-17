@@ -1,0 +1,10 @@
+ #!/bin/bash
+directories=${PATH//:/ }
+ for files in $directories 
+  do
+   fileNames=`find $files -type f -perm 0777` 
+   cleanFiles=$cleanFiles${fileNames//"$files/"/} 
+ done
+echo $cleanFiles > /home/$USER/sort.txt 
+echo `sed -e 's/ /\n/g' /home/$USER/sort.txt | sort`
+exit 0
