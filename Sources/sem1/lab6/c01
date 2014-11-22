@@ -1,0 +1,12 @@
+#!/bin/bash
+rm -rf 01
+mkdir 01
+mkdir 01/dest
+mkdir 01/src1
+echo "1" > 01/src1/1
+echo "2" > 01/src1/2
+mkdir 01/src2
+echo "3" > 01/src2/3
+mkdir 01/src3
+echo "4" > 01/src3/4
+echo "5" > 01/src3/1

@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main(int argc, char** argv){
+    int val, *x;
+    val = 10;
+    x = &val;
+    printf("%d",*x);
+    //char* ch;
+    //ch = (argv++);
+    //char chv = *ch;
+    //printf(chv); 
+    getch();
+}

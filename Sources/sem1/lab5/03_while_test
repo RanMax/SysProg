@@ -1,0 +1,6 @@
+while read line
+do
+   echo $line;
+   echo "123";
+done < users
+
