@@ -31,19 +31,19 @@ void printMas(int* mas, int argc){
 
 void sort(int* mas, int start, int end){
   if ((end - start) > 1) {
-    int p = (end + start)/2 + start;
+    int p = (end + start)/2;
     sort(mas, start, p);
     sort(mas, p+1, end);
     
     int i = start;
     int j = p+1;
     
-    int n = start;
+    int n = 0;
     
     int sortMas[end-start+1];
     
-    while (n <= end){
-      if (mas[i] < mas[j]){
+    while (n <= end - start){
+      if (mas[i] < mas[j] && i < p + 1 || j > end){
         sortMas[n] = mas[i];
         i++;
       } else {
