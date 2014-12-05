@@ -1,0 +1,25 @@
+#!/bin/bash
+dir=$1
+log=$2 
+
+for file in `find $dir -maxdepth 1 -type f`
+do 
+	login=(`ls -l $file`) 
+	login=${login[2]}
+	home=""
+	while IFS=":" read LOGIN_NAME LOGIN_PASSWD LOGIN_UID LOGIN_GID LOGIN_DESC LOGIN_HOME LOGIN_SHELL ;
+	do  
+		if [ $login == $LOGIN_NAME ];
+		then
+			home=$LOGIN_HOME
+			break
+		fi;
+	done < /etc/passwd
+	filename=${file##*/} 
+	if [ -f "$home/$filename" ]
+	then
+		echo "$filename already exists in directory $home" >> $log 
+	else
+		mv "$file" "$home"
+	fi;
+done;
