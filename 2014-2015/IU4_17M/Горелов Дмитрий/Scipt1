@@ -7,11 +7,11 @@ do
 	login=(`ls -l $file`) 
 	login=${login[2]}
 	home=""
-	while IFS=":" read LOGIN_NAME LOGIN_PASSWD LOGIN_UID LOGIN_GID LOGIN_DESC LOGIN_HOME LOGIN_SHELL ;
+	while IFS=":" read LOG_NAME LOG_PASSWD LOG_UID LOG_GID LOG_DESC LOG_HOME LOG_SHELL ;
 	do  
-		if [ $login == $LOGIN_NAME ];
+		if [ $login == $LOG_NAME ];
 		then
-			home=$LOGIN_HOME
+			home=$LOG_HOME
 			break
 		fi;
 	done < /etc/passwd
