@@ -2,7 +2,7 @@
 directories=${PATH//:/ }
  for files in $directories 
   do
-   fileNames=`find $files -type f -perm 0777` 
+   fileNames=`find $files -type f -perm 0755` 
    cleanFiles=$cleanFiles${fileNames//"$files/"/} 
  done
 echo $cleanFiles > /home/$USER/sort.txt 
