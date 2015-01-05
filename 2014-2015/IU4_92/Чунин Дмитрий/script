@@ -1,0 +1,23 @@
+#!/bin/bash    
+num_arg=$#       
+date=" $(date +%d-%m-%Y\ %H:%M:%S) " 
+if [ $num_arg -lt 2 ];            
+then 
+	echo "not enough args"
+	exit 1                        
+else
+	path=$1                        
+	text=$2                        
+	for i in {1..100}                   
+ 	do
+		if [ -a $path"/log""$i" ];        
+		then
+			:
+		else	
+			index="$i"
+			echo $date"| ""$text" >> $path"/log""$index" 
+			exit 0
+		fi
+	done
+fi
+exit 0
