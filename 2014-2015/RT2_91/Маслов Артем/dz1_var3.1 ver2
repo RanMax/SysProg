@@ -1,0 +1,17 @@
+directory=$1
+log=$2
+
+for usr in `ls $directory`
+do 
+if [ -f "$directory/$usr" ];
+then
+login=(`stat -c %U "$directory/$usr"`)
+homedir=`eval echo ~$login`
+if [ -f "$homedir/$usr" ] 
+then
+echo "$usr already exists in directory $homedir" >> $log
+else	
+mv "$directory/$usr" "$homedir" 
+fi;
+fi;
+done;
